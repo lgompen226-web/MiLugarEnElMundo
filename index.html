@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GT-T1-02 · Mi lugar en el mundo · Infografía de proceso</title>
+<style>
+  :root{
+    --ink:#1d2430; --muted:#556070; --line:#d9dee6; --bg:#ffffff; --paper:#f6f7f9;
+    --deleg:#1f5fa8; --desc:#6a3fa0; --disc:#a14f00; --dili:#23704a;
+    --docente:#0d5c63; --ia:#5b3e96; --nota:#8a6d00; --notabg:#fff8e1;
+    --mode:#1f5fa8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45}
+  .page{max-width:820px;margin:24px auto;background:var(--bg);padding:28px 32px;border:1px solid var(--line);border-radius:10px}
+  h1{font-size:26px;margin:4px 0 2px;line-height:1.15}
+  h2{font-size:17px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+  h2 .num{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px}
+  section{margin-top:22px}
+  p{margin:0 0 8px}
+  .eyebrow{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .sub{color:var(--muted);margin:0}
+
+  /* Cabecera */
+  header{border-bottom:3px solid var(--ink);padding-bottom:14px}
+  .head-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+  .badge-mode{flex:none;border:2px solid var(--mode);color:var(--mode);border-radius:10px;padding:8px 12px;text-align:center;min-width:150px}
+  .badge-mode .k{font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+  .badge-mode .v{font-size:17px;font-weight:700}
+  .badge-mode .h{font-size:12px;color:var(--muted)}
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 14px;margin-top:12px;font-size:13.5px}
+  .meta div b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+
+  /* Punto de partida */
+  .partida{background:var(--paper);border-radius:8px;padding:12px 14px;font-size:15.5px}
+
+  /* Flujo */
+  .timeline{list-style:none;margin:0;padding:0;position:relative}
+  .timeline:before{content:"";position:absolute;left:21px;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .step{position:relative;display:grid;grid-template-columns:44px 1fr;gap:10px;margin-bottom:10px}
+  .step .dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid;z-index:1}
+  .step .dot svg{width:22px;height:22px}
+  .step.docente .dot{border-color:var(--docente);color:var(--docente)}
+  .step.ia .dot{border-color:var(--ia);color:var(--ia)}
+  .step.mixto .dot{border-color:var(--docente);color:var(--docente);border-style:dashed}
+  .step .body{border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+  .who{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:4px;color:#fff;margin-right:6px}
+  .who.docente{background:var(--docente)} .who.ia{background:var(--ia)}
+  .out{display:inline-block;margin-top:4px;font-size:13px;background:var(--paper);border-radius:4px;padding:2px 8px}
+  .legend{display:flex;gap:14px;font-size:12.5px;color:var(--muted);margin-bottom:10px;flex-wrap:wrap}
+
+  /* 4D */
+  .grid4{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .card{border:1px solid var(--line);border-top:5px solid;border-radius:8px;padding:10px 12px}
+  .card h3{margin:0 0 6px;font-size:15px}
+  .card.deleg{border-top-color:var(--deleg)} .card.deleg h3{color:var(--deleg)}
+  .card.desc{border-top-color:var(--desc)} .card.desc h3{color:var(--desc)}
+  .card.disc{border-top-color:var(--disc)} .card.disc h3{color:var(--disc)}
+  .card.dili{border-top-color:var(--dili)} .card.dili h3{color:var(--dili)}
+
+  /* Notas didácticas */
+  .nota{border-left:4px solid var(--nota);background:var(--notabg);border-radius:0 6px 6px 0;padding:6px 10px;font-size:13.5px;margin-top:8px}
+  .nota b{color:var(--nota);font-size:11px;text-transform:uppercase;letter-spacing:.05em;display:block}
+
+  /* Prompt */
+  .prompt{font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:13.5px;background:#fbfbfc;border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+  .prompt div{margin:4px 0}
+  .tag{display:inline-block;min-width:92px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:1px 6px;border-radius:4px;margin-right:6px;text-align:center}
+  .t-ctx{background:#e3eefb;color:#174a85} .t-tarea{background:#ece4f7;color:#4f2c80}
+  .t-formato{background:#e2f2e9;color:#1b5a3b} .t-crit{background:#fbe9dc;color:#7f3f00} .t-mat{background:#eef0f3;color:#3a4350}
+  .missing{color:var(--muted);font-style:italic}
+
+  /* DUA */
+  .dua{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .dua .card{border-top-color:var(--ink)}
+  .dua ul{margin:0;padding-left:18px;font-size:13.5px}
+  .ok{margin-top:10px;font-size:13.5px}
+  .ok svg{width:16px;height:16px;vertical-align:-3px;color:var(--dili)}
+
+  /* Resultado */
+  .stats{display:flex;gap:10px;flex-wrap:wrap}
+  .stat{border:1px solid var(--line);border-radius:8px;padding:8px 14px;min-width:150px}
+  .stat b{display:block;font-size:20px}
+  .stat span{font-size:12.5px;color:var(--muted)}
+
+  /* Pruébalo y comprueba */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  ol.try,ul.check{margin:0;padding-left:20px}
+  ol.try li,ul.check li{margin-bottom:6px}
+  ul.check{list-style:none;padding-left:0}
+  ul.check li{padding-left:24px;position:relative}
+  ul.check li:before{content:"☐";position:absolute;left:0;top:-1px;font-size:16px}
+  .box{border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+  .box.nota-box{border-left:4px solid var(--nota)}
+
+  footer{margin-top:24px;border-top:1px solid var(--line);padding-top:10px;font-size:12px;color:var(--muted)}
+  footer p{margin:0 0 4px}
+
+  @media (max-width:640px){
+    .page{padding:18px 16px;margin:0;border-radius:0}
+    .meta{grid-template-columns:1fr 1fr}
+    .grid4,.dua,.two{grid-template-columns:1fr}
+    .head-top{flex-direction:column}
+  }
+  @page{size:A4 portrait;margin:10mm}
+  @media print{
+    body{background:#fff;font-size:11pt}
+    .page{border:none;margin:0;padding:0;max-width:none}
+    .card,.step,.box,.stat,.prompt,.partida,.nota{break-inside:avoid}
+    section{break-inside:auto}
+    h2{break-after:avoid;margin-bottom:6px}
+    section{margin-top:12px}
+    header{padding-bottom:8px}
+    .step{margin-bottom:6px}
+    .step .body,.card,.box{padding:6px 10px}
+    .nota{margin-top:5px;padding:4px 8px}
+    .partida{padding:8px 12px}
+    footer{margin-top:12px}
+    #resultado .stat{padding:4px 10px;min-width:0}
+    #resultado .stat b{font-size:15px;display:inline;margin-right:6px}
+    .grid4{gap:8px} .dua{gap:8px}
+    p{margin-bottom:4px}
+    h1{font-size:22px} h2{font-size:15px}
+    .legend{display:none}
+    .meta{margin-top:6px;gap:3px 14px}
+    .prompt{padding:6px 10px} .prompt div{margin:2px 0}
+    .dua ul li,.check li,.try li{margin-bottom:2px}
+    .step .dot{width:36px;height:36px} .step{grid-template-columns:36px 1fr}
+    .timeline:before{left:17px}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-docente" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c0-4.4 3.6-7.5 8-7.5s8 3.1 8 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-ia" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="9" y="9" width="6" height="6" rx="1" fill="currentColor"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-mixto" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2.5 19c0-3.3 2.5-5.5 5.5-5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="13" y="11" width="8.5" height="8.5" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="15.7" y="13.7" width="3" height="3" fill="currentColor"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main class="page">
+  <header>
+    <div class="head-top">
+      <div>
+        <div class="eyebrow">GT-T1-02 · Infografía de proceso · Banco de usos de IA docente</div>
+        <h1>Mi lugar en el mundo</h1>
+        <p class="sub">Así lo hizo Elena: un librito manipulable de círculos, rehecho con la IA a partir de una ficha suya.</p>
+      </div>
+      <div class="badge-mode" role="note" aria-label="Modo de uso de la IA: Aumentación">
+        <div class="k">Modo de uso</div>
+        <div class="v">Aumentación</div>
+        <div class="h">varias vueltas · pide, revisa, corrige</div>
+      </div>
+    </div>
+    <div class="meta"><div><b>Docente</b>Elena Velasco Fernández de Bobadilla</div><div><b>Etapa · nivel · área</b>Primaria · 2.º · Conocimiento del Medio</div><div><b>Línea de trabajo</b>a) Aula · d) DUA</div><div><b>Punto de partida</b>Un documento propio</div><div><b>Herramienta</b>Gemini (autorizada)</div><div><b>En el aula</b>2 sesiones · unidad de la localidad</div></div>
+  </header>
+
+  <section id="partida">
+    <h2><span class="num">1</span>El punto de partida</h2>
+    <p class="partida">Elena quería que su alumnado de 2.º se situara en su entorno, de lo más cercano a lo más lejano, y distinguiera localidad, municipio, provincia, comunidad autónoma, país, continente y planeta. Tenía una ficha previa y quería convertirla en un objeto manipulable para dos niveles de aula.</p>
+  </section>
+
+  <section id="flujo">
+    <h2><span class="num">2</span>El flujo, paso a paso</h2>
+    <div class="legend">
+      <span><span class="who docente">Docente</span>decide y revisa</span>
+      <span><span class="who ia">IA</span>ejecuta el encargo</span>
+    </div>
+    <ol class="timeline">
+<li class="step docente"><div class="dot"><svg role="img" aria-label="Docente"><use href="#i-docente"/></svg></div><div class="body"><span class="who docente">Docente</span><b>Decide</b> la idea, los nueve lugares, los dos niveles y los criterios de estilo. Reúne su ficha previa y una foto de la parroquia.</div></li>
+<li class="step docente"><div class="dot"><svg role="img" aria-label="Docente"><use href="#i-docente"/></svg></div><div class="body"><span class="who docente">Docente</span><b>Describe</b> el encargo con contexto, tarea, formato y criterios, y adjunta esos dos materiales.</div></li>
+<li class="step ia"><div class="dot"><svg role="img" aria-label="IA"><use href="#i-ia"/></svg></div><div class="body"><span class="who ia">IA</span><b>Diseña</b> y dibuja los círculos, los mapas y las dos versiones.<br><span class="out">Primera versión del librito</span></div></li>
+<li class="step mixto"><div class="dot"><svg role="img" aria-label="Docente e IA"><use href="#i-mixto"/></svg></div><div class="body"><span class="who docente">Docente</span><span class="who ia">IA</span><b>Revisa</b> cada versión y pide cambios concretos: pestañas en lugar de círculos concéntricos, personajes de estilo actual y la niña con pantalón, mapas más grandes, línea más fina y la parroquia real en lugar de un edificio genérico.<br><span class="out">Varias vueltas: pide, revisa, corrige</span></div></li>
+<li class="step docente"><div class="dot"><svg role="img" aria-label="Docente"><use href="#i-docente"/></svg></div><div class="body"><span class="who docente">Docente</span><b>Comprueba</b> los nombres y el orden de los lugares, y que las dos versiones piden el mismo objetivo.<br><span class="out">Librito de nueve círculos en dos versiones</span></div></li>
+    </ol>
+    <div class="nota"><b>Qué nos enseña</b>La Aumentación se ve en el paso 4: el resultado final no sale del primer encargo, sale de las vueltas. Cada cambio pedido es una decisión docente.</div>
+  </section>
+
+  <section id="cuatro-d">
+    <h2><span class="num">3</span>Las 4D en este caso</h2>
+    <div class="grid4">
+<div class="card deleg"><h3>Delegación</h3><p>La idea, el modelo de partida, los lugares, los dos niveles y los criterios de estilo los decidió ella. La IA diseñó y dibujó círculos, mapas y versiones. No delegó los contenidos ni la evaluación.</p><div class="nota"><b>Qué nos enseña</b>Se delega la ejecución gráfica. El contenido curricular se queda con la docente.</div></div>
+<div class="card desc"><h3>Descripción</h3><p>Dio contexto, tarea, formato y criterios, y acompañó el encargo con su ficha previa y una foto de la parroquia.</p><div class="nota"><b>Qué nos enseña</b>Adjuntar un modelo ahorra explicaciones: la IA lo ve en lugar de imaginarlo.</div></div>
+<div class="card disc"><h3>Discernimiento</h3><p>Revisó cada versión hasta que la convenció y comprobó que las dos versiones piden el mismo objetivo: solo cambia el apoyo para escribir.</p><div class="nota"><b>Qué nos enseña</b>Quién aparece en los dibujos y cómo aparece también es contenido, y también se revisa.</div></div>
+<div class="card dili"><h3>Diligencia</h3><p>No dio datos del alumnado: el nombre y la dirección los escriben los niños a mano en el papel. Revisó los lugares, usó mapas de datos geográficos abiertos y dejó constancia del papel de la IA.</p><div class="nota"><b>Qué nos enseña</b>Si la actividad necesita un dato personal, que se escriba en el papel, nunca en la IA.</div></div>
+    </div>
+  </section>
+
+  <section id="prompt">
+    <h2><span class="num">4</span>Cómo lo pidió</h2>
+    <p class="sub" style="margin-bottom:8px">Estructura del encargo, según la descripción de la autora:</p>
+    <div class="prompt"><div><span class="tag t-ctx">Contexto</span>2.º de Primaria · su localidad y su municipio · dos niveles en el aula</div><div><span class="tag t-tarea">Tarea</span>círculos de mayor a menor unidos con encuadernador, una pestaña por lugar</div><div><span class="tag t-formato">Formato</span>PDF A4 para imprimir · letra enlazada · línea fina para colorear</div><div><span class="tag t-crit">Criterios</span>lugares reales del entorno · dibujos de niño y niña no estereotipados · estilo que no infantilice</div><div><span class="tag t-mat">Material</span>su ficha previa · una foto de la parroquia</div></div>
+    <div class="nota"><b>Si lo pruebas tú</b>pide primero una sola pestaña y ajusta el estilo sobre ella. Corregir una vez cuesta menos que corregir nueve.</div>
+  </section>
+
+  <section id="dua">
+    <h2><span class="num">5</span>Para todo el alumnado (DUA)</h2>
+    <div class="dua"><div class="card"><h3>Implicación</h3><ul><li>Lugares reales y reconocibles: su casa, la laguna de Fuente del Rey, la parroquia de Santa María Magdalena.</li><li>Elige el personaje con el que se identifica.</li><li>Construye un objeto que puede enseñar y llevarse a casa.</li></ul></div><div class="card"><h3>Representación</h3><ul><li>Dibujos, mapas y palabras en letra enlazada.</li><li>La forma del objeto, cada círculo dentro del siguiente, muestra que cada lugar está dentro del siguiente.</li><li>Una estrella marca Dos Hermanas en todos los mapas.</li></ul></div><div class="card"><h3>Acción y expresión</h3><ul><li>Dos versiones con el mismo objetivo: escribir el nombre de cada lugar o repasarlo punteado.</li><li>Demuestra lo aprendido ordenando, escribiendo, coloreando o explicándolo con el librito en la mano.</li></ul></div></div>
+    <p class="ok"><svg aria-hidden="true"><use href="#i-check"/></svg> Las dos versiones mantienen el mismo objetivo de aprendizaje y no infantilizan.</p>
+    <p class="sub" style="font-size:12.5px">Marco citado por la autora: Decreto 101/2023, de 9 de mayo (arts. 4.d y 7). Comprobar en BOJA.</p>
+  </section>
+
+  <section id="pruebalo" class="two">
+    <div class="box nota-box">
+      <h2><span class="num">6</span>Pruébalo tú</h2>
+      <ol class="try"><li>Parte de una ficha tuya que ya funcione y adjúntala al encargo.</li><li>Describe contexto, tarea, formato y criterios, incluidos los de estilo.</li><li>Revisa cada versión y pide uno o dos cambios concretos por vuelta.</li></ol>
+    </div>
+    <div class="box nota-box" id="comprueba">
+      <h2><span class="num">7</span>Antes de usarlo, comprueba</h2>
+      <ul class="check"><li>Que los nombres y el orden de los lugares son correctos (localidad, municipio, provincia…).</li><li>Que los mapas salen de una fuente abierta y son exactos.</li><li>Que los personajes no reproducen estereotipos.</li><li>Que no aparece ningún dato del alumnado.</li></ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>Mi lugar en el mundo · Grupo de Trabajo "IA en la práctica docente", CEIP San Fernando, curso 2026/2027 · CC BY-NC-SA 4.0. Basado en el marco AI Fluency de R. Dakan y J. Feller (con Anthropic), CC BY-NC-SA 4.0. Elaborado con apoyo de IA generativa; contenido revisado por el profesorado autor.</p>
+    <p>Autoría de la actividad: Elena Velasco Fernández de Bobadilla</p>
+  </footer>
+</main>
+</body>
+</html>
